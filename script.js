@@ -138,4 +138,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 300);
         }, 2500);
     }
+
+    // 6. Hamburger Mobile Menu Toggle
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const body = document.body;
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (hamburgerBtn && mobileMenu) {
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+            body.classList.toggle('menu-open');
+        });
+
+        // Close menu when clicking on a link
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('open');
+                mobileMenu.classList.remove('open');
+                body.classList.remove('menu-open');
+            });
+        });
+    }
 });
