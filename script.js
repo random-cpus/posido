@@ -2,16 +2,17 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. Header Scroll Shadow Transition
+    // 1. Header Scroll Shadow Transition (Gracefully guarded)
     const header = document.querySelector('.header');
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 20) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
 
     // 2. Sticky Mobile CTA Banner Behavior
     const stickyCta = document.querySelector('.sticky-mobile-cta');
